@@ -1,9 +1,39 @@
-const inventory = newInventory()
-move(inventory).to(0, 0)
-
 const character = newImage('assets/green-character/static.gif')
-move(character).to(100, 250)
 
+
+
+
+move(character).withArrowKeys(100, 250)
+
+document.addEventListener('keydown', function(e){
+    if(e.repeat) return;
+
+    if(e.key === 'ArrowLeft'){
+        direction = 'west'
+        character.src = 'assets/green-character/west.gif'
+    }
+    if(e.key === 'ArrowUp'){
+        direction = 'north'
+        character.src = 'assets/green-character/north.gif'
+    }
+    if(e.key === 'ArrowRight'){
+        direction = 'east'
+        character.src = 'assets/green-character/east.gif'
+    }
+    if(e.key === 'ArrowDown'){
+        direction = 'south'
+        character.src = 'assets/green-character/south.gif'
+    }
+    
+})
+document.addEventListener('keyup', function(e){
+    direction = null
+    character.src = 'assets/green-character/static.gif'
+})
+
+
+
+                                 
 
 move(newImage('assets/tree.png')).to(200, 450)
 move(newImage('assets/pillar.png')).to(350, 250)
